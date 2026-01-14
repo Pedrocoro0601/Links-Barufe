@@ -199,21 +199,47 @@
         .interstitial {
             position: absolute;
             inset: 0;
-            background: white;
-            z-index: 10;
+            background: #ffffff;
+            z-index: 1000;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             opacity: 0;
+            visibility: hidden;
             pointer-events: none;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
-        .btn-link.is-active .interstitial { opacity: 1; pointer-events: auto; }
-        .loading-bar { width: 80%; height: 4px; background: #eee; border-radius: 10px; margin-top: 10px; overflow: hidden; }
-        .loading-bar-fill { height: 100%; width: 0%; transition: width 5s linear; }
-        .btn-link.is-active .loading-bar-fill { width: 100%; }
+        .btn-link.is-active .interstitial { 
+            opacity: 1 !important; 
+            visibility: visible !important; 
+            pointer-events: auto; 
+        }
+
+        .loading-bar { 
+            width: 80%; 
+            height: 6px;
+            background: #f0f0f0; 
+            border-radius: 10px; 
+            margin-top: 15px; 
+            overflow: hidden; 
+            position: relative;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .loading-bar-fill { 
+            height: 100%; 
+            width: 0%; 
+            transition: width 0.1s linear; 
+        }
+
+        /* Cores explicitas para a barra */
+        .fill-whatsapp { background-color: #25D366 !important; }
+        .fill-shopee { background-color: #EE4D2D !important; }
+        .fill-mercadolivre { background-color: #FFE600 !important; }
+        .fill-amazon { background-color: #FF9900 !important; }
+        .fill-olive { background-color: #556B2F !important; }
 
         .cascade-item { opacity: 0; transform: translateY(20px); }
         .fade-in { animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
@@ -280,7 +306,7 @@
                     </button>
                 </div>
             </div>
-            <!-- Alterado para verde (olive) com escrita branca -->
+            <!-- Botão fechar jogo -->
             <button onclick="closeGame()" class="mt-4 bg-olive text-white font-bold py-2 px-8 rounded-full shadow-lg hover:bg-olive-dark transition-all transform active:scale-95 text-xs uppercase tracking-widest">
                 Fechar Jogo
             </button>
@@ -337,7 +363,7 @@
                     <i data-lucide="chevron-right" class="w-4 h-4 sm:w-5 sm:h-5 text-coffee/20"></i>
                     <div class="interstitial">
                         <span class="text-xs font-bold text-whatsapp uppercase tracking-wider">Preparando o atendimento...</span>
-                        <div class="loading-bar"><div class="loading-bar-fill bg-whatsapp"></div></div>
+                        <div class="loading-bar"><div class="loading-bar-fill fill-whatsapp"></div></div>
                         <span class="text-[10px] text-coffee/40 mt-1">Redirecionando em <span class="countdown">5</span>s</span>
                     </div>
                 </button>
@@ -358,7 +384,7 @@
                     <i data-lucide="chevron-right" class="w-4 h-4 sm:w-5 sm:h-5 text-coffee/20"></i>
                     <div class="interstitial">
                         <span class="text-xs font-bold text-shopee uppercase tracking-wider">Abrindo a Shopee...</span>
-                        <div class="loading-bar"><div class="loading-bar-fill bg-shopee"></div></div>
+                        <div class="loading-bar"><div class="loading-bar-fill fill-shopee"></div></div>
                         <span class="text-[10px] text-coffee/40 mt-1">Redirecionando em <span class="countdown">5</span>s</span>
                     </div>
                 </button>
@@ -379,7 +405,7 @@
                     <i data-lucide="chevron-right" class="w-4 h-4 sm:w-5 sm:h-5 text-coffee/20"></i>
                     <div class="interstitial">
                         <span class="text-xs font-bold text-coffee uppercase tracking-wider">Buscando no Mercado Livre...</span>
-                        <div class="loading-bar"><div class="loading-bar-fill bg-mercadolivre"></div></div>
+                        <div class="loading-bar"><div class="loading-bar-fill fill-mercadolivre"></div></div>
                         <span class="text-[10px] text-coffee/40 mt-1">Redirecionando em <span class="countdown">5</span>s</span>
                     </div>
                 </button>
@@ -400,7 +426,7 @@
                     <i data-lucide="chevron-right" class="w-4 h-4 sm:w-5 sm:h-5 text-coffee/20"></i>
                     <div class="interstitial">
                         <span class="text-xs font-bold text-amazon uppercase tracking-wider">Conectando à Amazon...</span>
-                        <div class="loading-bar"><div class="loading-bar-fill bg-amazon"></div></div>
+                        <div class="loading-bar"><div class="loading-bar-fill fill-amazon"></div></div>
                         <span class="text-[10px] text-coffee/40 mt-1">Redirecionando em <span class="countdown">5</span>s</span>
                     </div>
                 </button>
@@ -422,13 +448,13 @@
                     <i data-lucide="chevron-right" class="w-4 h-4 sm:w-5 sm:h-5 text-coffee/20"></i>
                     <div class="interstitial">
                         <span class="text-xs font-bold text-olive uppercase tracking-wider">Abrindo as portas...</span>
-                        <div class="loading-bar"><div class="loading-bar-fill bg-olive"></div></div>
+                        <div class="loading-bar"><div class="loading-bar-fill fill-olive"></div></div>
                         <span class="text-[10px] text-coffee/40 mt-1">Redirecionando em <span class="countdown">5</span>s</span>
                     </div>
                 </button>
             </div>
 
-            <!-- Botão Jogo (Cor Café da mesma paleta da faixa) -->
+            <!-- Botão Jogo -->
             <div class="btn-link-wrapper relative group pt-2">
                 <button onclick="openGameModal()" class="btn-link group w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-coffee text-cream shadow-lg border-none">
                     <div class="flex items-center space-x-3 sm:space-x-4">
@@ -451,10 +477,10 @@
         <!-- Minimal Footer -->
         <div class="mt-16 sm:mt-20 flex flex-col items-center space-y-6 cascade-item pb-10">
             <div class="flex space-x-8">
-                <a href="https://www.instagram.com/barufebrasil/?igsh=d2VrZzY5NGd2ZmFm#" class="text-coffee/40 hover:text-olive transition-all transform hover:scale-110 active:scale-90">
+                <a href="https://www.instagram.com/barufebrasil/?igsh=d2VrZzY5NGd2ZmFm#" target="_blank" class="text-coffee/40 hover:text-olive transition-all transform hover:scale-110 active:scale-90">
                     <i data-lucide="instagram" class="w-6 h-6"></i>
                 </a>
-                <a href="barufebrasil@gmail.com" class="text-coffee/40 hover:text-olive transition-all transform hover:scale-110 active:scale-90">
+                <a href="mailto:barufebrasil@gmail.com" class="text-coffee/40 hover:text-olive transition-all transform hover:scale-110 active:scale-90">
                     <i data-lucide="mail" class="w-6 h-6"></i>
                 </a>
             </div>
@@ -647,7 +673,6 @@
                 ctx.rotate(c.rot);
                 
                 if (c.isPeeled) {
-                    // DESPEELADA (Douradinha)
                     ctx.fillStyle = '#F5DEB3'; 
                     ctx.beginPath();
                     ctx.ellipse(0, 0, c.size/2.2, c.size/3.5, 0, 0, Math.PI * 2);
@@ -656,7 +681,6 @@
                     ctx.lineWidth = 1;
                     ctx.stroke();
                 } else {
-                    // COM CASCA (Escura)
                     ctx.fillStyle = '#3E2723'; 
                     ctx.beginPath();
                     ctx.ellipse(0, 0, c.size/2, c.size/3, 0, 0, Math.PI * 2);
@@ -719,15 +743,56 @@
         // Redirect Logic
         function handleRedirect(btn, theme, url) {
             if (btn.classList.contains('is-active')) return;
+            
+            resetRedirections();
+            
             btn.classList.add('is-active');
             let timeLeft = 5;
             const countdownEl = btn.querySelector('.countdown');
-            const timer = setInterval(() => {
+            const fill = btn.querySelector('.loading-bar-fill');
+            
+            // Força a largura para 0 antes de iniciar para garantir animação limpa
+            if (fill) {
+                fill.style.width = '0%';
+                // Trigger reflow
+                fill.getBoundingClientRect();
+                // Inicia preenchimento para 100% sincronizado com os 5 segundos
+                fill.style.transition = 'width 5s linear';
+                fill.style.width = '100%';
+            }
+
+            btn._timer = setInterval(() => {
                 timeLeft--;
                 if (countdownEl) countdownEl.innerText = timeLeft;
-                if (timeLeft <= 0) { clearInterval(timer); window.location.href = url; }
+                if (timeLeft <= 0) { 
+                    clearInterval(btn._timer); 
+                    window.location.href = url; 
+                }
             }, 1000);
         }
+
+        // Função universal de reset para os botões
+        function resetRedirections() {
+            const buttons = document.querySelectorAll('.btn-link');
+            buttons.forEach(btn => {
+                btn.classList.remove('is-active');
+                if (btn._timer) {
+                    clearInterval(btn._timer);
+                    btn._timer = null;
+                }
+                const countdownEl = btn.querySelector('.countdown');
+                if (countdownEl) countdownEl.innerText = '5';
+                const fill = btn.querySelector('.loading-bar-fill');
+                if (fill) {
+                    fill.style.transition = 'none';
+                    fill.style.width = '0%';
+                }
+            });
+        }
+
+        // Lógica de Reset ao voltar (Handling BFCache e Navegação de volta)
+        window.addEventListener('pageshow', resetRedirections);
+        window.addEventListener('load', resetRedirections);
 
         // Intro
         document.addEventListener('DOMContentLoaded', () => {
