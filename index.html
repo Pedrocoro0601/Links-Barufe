@@ -180,26 +180,11 @@
             transform: scale(0.98);
         }
 
-        .btn-site .wave-fill {
-            position: absolute;
-            bottom: -100%;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--olive);
-            z-index: -1;
-            transition: bottom 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-            border-radius: 50% 50% 0 0;
-            transform: scale(1.5);
+        .btn-site {
+            background-color: var(--olive) !important;
+            border: none;
         }
-        .btn-site:hover .wave-fill { bottom: 0; border-radius: 0; transform: scale(1); }
-        .btn-site:hover .icon-box { background: rgba(255,255,255,0.2); color: white; }
         
-        /* Corrigido: seletor de hover mais específico para não afetar o texto do interstitial */
-        .btn-site:hover .btn-text-main, 
-        .btn-site:hover .btn-text-sub, 
-        .btn-site:hover i:not(.interstitial i) { color: white !important; }
-
         .interstitial {
             position: absolute;
             inset: 0;
@@ -303,7 +288,7 @@
                     </h3>
                     <p id="game-desc" class="text-xs text-coffee/60 mb-6 font-sans">Mova a cesta para colher o máximo de Baru que conseguir!</p>
                     <div id="game-playful-msg" class="hidden text-sm font-bold text-olive-dark mb-6 italic leading-snug">
-                        "Dica: Quem come as castanhas Barufé tem muito mais energia e consegue ir muito mais longe!"
+                        "Dica: Quem come as castanhas Barufé tem muito mais energia e consegue ir muito mais longe! 🌰✨"
                     </div>
                     <button id="start-btn" onclick="startGame()" class="bg-olive text-white font-bold py-3 px-8 rounded-full hover:bg-olive-dark transition-all transform hover:scale-105 active:scale-95 shadow-lg text-sm uppercase tracking-widest">
                         Começar Jogo
@@ -439,17 +424,16 @@
             <!-- Site Oficial -->
             <div class="btn-link-wrapper relative group">
                 <button onclick="handleRedirect(this, 'site', 'https://barufe.com.br')" class="btn-link btn-site group w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl sm:rounded-3xl">
-                    <div class="wave-fill"></div>
                     <div class="flex items-center space-x-3 sm:space-x-4">
-                        <div class="icon-box w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-olive/10 rounded-xl sm:rounded-2xl text-olive">
+                        <div class="icon-box w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/20 rounded-xl sm:rounded-2xl text-white">
                             <i data-lucide="globe" class="w-5 h-5 sm:w-6 sm:h-6 icon-loop-spin"></i>
                         </div>
                         <div class="text-left">
-                            <span class="btn-text-main block text-coffee font-bold text-sm sm:text-base">Site Oficial</span>
-                            <span class="btn-text-sub text-[9px] uppercase font-bold text-coffee/30 tracking-widest leading-none">Nossa Loja Online</span>
+                            <span class="btn-text-main block text-white font-bold text-sm sm:text-base">Site Oficial</span>
+                            <span class="btn-text-sub text-[9px] uppercase font-bold text-white/60 tracking-widest leading-none">Nossa Loja Online</span>
                         </div>
                     </div>
-                    <i data-lucide="chevron-right" class="w-4 h-4 sm:w-5 sm:h-5 text-coffee/20"></i>
+                    <i data-lucide="chevron-right" class="w-4 h-4 sm:w-5 sm:h-5 text-white/40"></i>
                     <div class="interstitial">
                         <span class="text-xs font-bold text-olive uppercase tracking-wider">Abrindo as portas...</span>
                         <div class="loading-bar"><div class="loading-bar-fill fill-olive"></div></div>
