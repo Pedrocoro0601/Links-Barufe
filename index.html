@@ -229,7 +229,7 @@
                 <i data-lucide="x" class="w-6 h-6"></i>
             </button>
             <div class="w-20 h-20 rounded-full border border-olive/10 p-1 mx-auto mb-4 bg-white shadow-sm overflow-hidden">
-                <img src="https://placehold.co/400x400/FFFFFF/4E342E?text=Logo" alt="Barufé Logo" class="w-full h-full object-contain">
+                <img src="logo1.png" alt="Barufé Logo" class="w-full h-full object-contain">
             </div>
             <h2 class="font-logo text-4xl text-coffee mb-4">Barufé</h2>
             <div class="w-full h-[1px] bg-coffee/5 mb-6"></div>
@@ -280,7 +280,8 @@
                     </button>
                 </div>
             </div>
-            <button onclick="closeGame()" class="mt-4 bg-coffee/20 text-coffee font-bold py-2 px-6 rounded-full border border-coffee/10 backdrop-blur-md text-xs uppercase tracking-widest">
+            <!-- Alterado para verde (olive) com escrita branca -->
+            <button onclick="closeGame()" class="mt-4 bg-olive text-white font-bold py-2 px-8 rounded-full shadow-lg hover:bg-olive-dark transition-all transform active:scale-95 text-xs uppercase tracking-widest">
                 Fechar Jogo
             </button>
         </div>
@@ -292,7 +293,7 @@
         <header class="text-center px-6 mb-2 cascade-item">
             <div class="relative inline-block mb-3 group cursor-pointer" onclick="openStory()">
                 <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-[3px] border-olive p-1 bg-white shadow-xl mx-auto overflow-hidden transition-transform group-hover:scale-105 active:scale-95">
-                    <img src="https://placehold.co/400x400/4E342E/F9F9F3?text=B" alt="Barufé" class="w-full h-full object-cover rounded-full">
+                    <img src="logo1.png" alt="Barufé" class="w-full h-full object-cover rounded-full">
                 </div>
                 <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 bg-olive text-white text-[8px] px-2 py-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
                     Nossa História
@@ -330,7 +331,7 @@
                         </div>
                         <div class="text-left">
                             <span class="btn-text-main block text-coffee font-bold text-sm sm:text-base">WhatsApp Oficial</span>
-                            <span class="btn-text-sub text-[9px] uppercase font-bold text-coffee/30 tracking-widest leading-none">Pedido pelo Chat</span>
+                            <span class="btn-text-sub text-[9px] uppercase font-bold text-coffee/30 tracking-widest leading-none">Compre pelo whatsApp</span>
                         </div>
                     </div>
                     <i data-lucide="chevron-right" class="w-4 h-4 sm:w-5 sm:h-5 text-coffee/20"></i>
@@ -350,8 +351,8 @@
                             <i data-lucide="shopping-bag" class="w-5 h-5 sm:w-6 sm:h-6 icon-loop-bounce"></i>
                         </div>
                         <div class="text-left">
-                            <span class="btn-text-main block text-coffee font-bold text-sm sm:text-base">Loja na Shopee</span>
-                            <span class="btn-text-sub text-[9px] uppercase font-bold text-coffee/30 tracking-widest leading-none">Ofertas & Frete</span>
+                            <span class="btn-text-main block text-coffee font-bold text-sm sm:text-base">Shopee</span>
+                            <span class="btn-text-sub text-[9px] uppercase font-bold text-coffee/30 tracking-widest leading-none">Compre pela shopee</span>
                         </div>
                     </div>
                     <i data-lucide="chevron-right" class="w-4 h-4 sm:w-5 sm:h-5 text-coffee/20"></i>
@@ -372,7 +373,7 @@
                         </div>
                         <div class="text-left">
                             <span class="btn-text-main block text-coffee font-bold text-sm sm:text-base">Mercado Livre</span>
-                            <span class="btn-text-sub text-[9px] uppercase font-bold text-coffee/30 tracking-widest leading-none">Entrega Rápida</span>
+                            <span class="btn-text-sub text-[9px] uppercase font-bold text-coffee/30 tracking-widest leading-none">Compre pelo mercado livre</span>
                         </div>
                     </div>
                     <i data-lucide="chevron-right" class="w-4 h-4 sm:w-5 sm:h-5 text-coffee/20"></i>
@@ -392,8 +393,8 @@
                             <i data-lucide="shopping-cart" class="w-5 h-5 sm:w-6 sm:h-6 icon-loop-float"></i>
                         </div>
                         <div class="text-left">
-                            <span class="btn-text-main block text-coffee font-bold text-sm sm:text-base">Comprar na Amazon</span>
-                            <span class="btn-text-sub text-[9px] uppercase font-bold text-coffee/30 tracking-widest leading-none">Confiança & Prime</span>
+                            <span class="btn-text-main block text-coffee font-bold text-sm sm:text-base">Amazon</span>
+                            <span class="btn-text-sub text-[9px] uppercase font-bold text-coffee/30 tracking-widest leading-none">compre pela amazon</span>
                         </div>
                     </div>
                     <i data-lucide="chevron-right" class="w-4 h-4 sm:w-5 sm:h-5 text-coffee/20"></i>
@@ -427,20 +428,20 @@
                 </button>
             </div>
 
-            <!-- Botão Jogo -->
+            <!-- Botão Jogo (Cor Café da mesma paleta da faixa) -->
             <div class="btn-link-wrapper relative group pt-2">
-                <button onclick="openGameModal()" class="btn-link group w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl sm:rounded-3xl border-2 border-olive/30 bg-white shadow-lg">
+                <button onclick="openGameModal()" class="btn-link group w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-coffee text-cream shadow-lg border-none">
                     <div class="flex items-center space-x-3 sm:space-x-4">
-                        <div class="icon-box w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-olive/10 rounded-xl sm:rounded-2xl text-olive">
+                        <div class="icon-box w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/10 rounded-xl sm:rounded-2xl text-cream">
                             <i data-lucide="gamepad-2" class="w-5 h-5 sm:w-6 sm:h-6 icon-loop-float"></i>
                         </div>
                         <div class="text-left">
-                            <span class="btn-text-main block text-coffee font-bold text-sm sm:text-base">O Jogo da Barufé</span>
-                            <span class="btn-text-sub text-[9px] uppercase font-bold text-olive/60 tracking-widest leading-none">Colheita do Cerrado</span>
+                            <span class="btn-text-main block text-cream font-bold text-sm sm:text-base">O Jogo da Barufé</span>
+                            <span class="btn-text-sub text-[9px] uppercase font-bold text-cream/40 tracking-widest leading-none">Colheita do Cerrado</span>
                         </div>
                     </div>
                     <div class="flex flex-col items-end">
-                         <span class="px-2 py-0.5 bg-olive text-white text-[7px] font-bold rounded-md animate-pulse uppercase">Play</span>
+                         <span class="px-2 py-0.5 bg-cream text-coffee text-[7px] font-bold rounded-md animate-pulse uppercase">Play</span>
                     </div>
                 </button>
             </div>
@@ -576,6 +577,9 @@
         }
 
         function startGame() {
+            if (gameState === 'gameover') {
+                resetGame();
+            }
             gameState = 'playing';
             gameOverlay.style.display = 'none';
             lastSpawn = performance.now();
@@ -583,14 +587,16 @@
         }
 
         function spawnChestnut() {
-            const size = Math.random() * 10 + 15;
+            const size = Math.random() * 10 + 20;
+            const isPeeled = Math.random() > 0.5;
             chestnuts.push({
                 x: Math.random() * (canvas.width - size),
                 y: -50,
                 size: size,
-                speed: (Math.random() * 2 + 3) * (1 + (level - 1) * 0.15), // Progressively faster
+                speed: (Math.random() * 2 + 3) * (1 + (level - 1) * 0.15),
                 rot: Math.random() * Math.PI * 2,
-                rotSpeed: (Math.random() - 0.5) * 0.1
+                rotSpeed: (Math.random() - 0.5) * 0.1,
+                isPeeled: isPeeled
             });
         }
 
@@ -608,7 +614,7 @@
             if (basket.x < 0) basket.x = 0;
             if (basket.x > canvas.width - basket.w) basket.x = canvas.width - basket.w;
 
-            // Draw Basket
+            // Desenhar Cesta
             ctx.fillStyle = '#4E342E';
             ctx.beginPath();
             if (ctx.roundRect) {
@@ -623,14 +629,14 @@
             ctx.textAlign = 'center';
             ctx.fillText('Barufé', basket.x + basket.w/2, basket.y + basket.h/2 + 4);
 
-            // Alça
+            // Desenhar Alça
             ctx.strokeStyle = '#4E342E';
             ctx.lineWidth = 2;
             ctx.beginPath();
             ctx.arc(basket.x + basket.w/2, basket.y, basket.w/3, Math.PI, 0);
             ctx.stroke();
 
-            // Chestnuts
+            // Desenhar Castanhas
             for (let i = chestnuts.length - 1; i >= 0; i--) {
                 const c = chestnuts[i];
                 c.y += c.speed;
@@ -639,12 +645,28 @@
                 ctx.save();
                 ctx.translate(c.x + c.size/2, c.y + c.size/2);
                 ctx.rotate(c.rot);
-                ctx.fillStyle = '#4E342E';
-                ctx.beginPath();
-                ctx.ellipse(0, 0, c.size/2, c.size/3, 0, 0, Math.PI * 2);
-                ctx.fill();
+                
+                if (c.isPeeled) {
+                    // DESPEELADA (Douradinha)
+                    ctx.fillStyle = '#F5DEB3'; 
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, c.size/2.2, c.size/3.5, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.strokeStyle = '#E2B13C';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                } else {
+                    // COM CASCA (Escura)
+                    ctx.fillStyle = '#3E2723'; 
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, c.size/2, c.size/3, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.strokeStyle = '#4E342E';
+                    ctx.stroke();
+                }
                 ctx.restore();
 
+                // Colisão
                 if (c.y + c.size > basket.y && 
                     c.x + c.size > basket.x && 
                     c.x < basket.x + basket.w &&
@@ -652,19 +674,22 @@
                     chestnuts.splice(i, 1);
                     score++;
                     scoreEl.innerText = score;
-                    if (score > 0 && score % 8 === 0) {
+                    if (score > 0 && score % 10 === 0) {
                         level++;
                         levelEl.innerText = 'NÍVEL ' + level;
-                        spawnRate = Math.max(350, 1200 - (level * 80));
+                        spawnRate = Math.max(300, 1200 - (level * 90));
                     }
                     continue;
                 }
 
+                // Perder Vida
                 if (c.y > canvas.height) {
                     chestnuts.splice(i, 1);
                     lives--;
                     updateLivesUI();
-                    if (lives <= 0) gameOver();
+                    if (lives <= 0) {
+                        gameOver();
+                    }
                 }
             }
 
