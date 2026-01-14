@@ -194,7 +194,11 @@
         }
         .btn-site:hover .wave-fill { bottom: 0; border-radius: 0; transform: scale(1); }
         .btn-site:hover .icon-box { background: rgba(255,255,255,0.2); color: white; }
-        .btn-site:hover span, .btn-site:hover i { color: white !important; }
+        
+        /* Corrigido: seletor de hover mais específico para não afetar o texto do interstitial */
+        .btn-site:hover .btn-text-main, 
+        .btn-site:hover .btn-text-sub, 
+        .btn-site:hover i:not(.interstitial i) { color: white !important; }
 
         .interstitial {
             position: absolute;
