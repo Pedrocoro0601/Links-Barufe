@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Barufé | Links Oficiais</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,6 +24,7 @@
                         whatsapp: '#25D366',
                         shopee: '#EE4D2D',
                         mercadolivre: '#FFE600',
+                        amazon: '#FF9900',
                     },
                     fontFamily: {
                         logo: ['Kaushan Script', 'cursive'],
@@ -47,14 +48,14 @@
             color: var(--coffee);
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
+            user-select: none;
         }
 
-        /* Fundo Temático Suave */
         .baru-bg {
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 20c-10 0-18 15-18 30s8 30 18 30 18-15 18-30-8-30-18-30z' fill='%23556B2F' fill-opacity='0.03'/%3E%3C/svg%3E");
         }
 
-        /* Faixas Cruzadas - Otimizadas para Looping Infinito e Velocidade PC */
+        /* Faixas Cruzadas */
         .ticker-container {
             position: relative;
             width: 100vw;
@@ -64,30 +65,33 @@
         }
 
         .ticker-band {
-            width: 100%;
+            width: 200%;
+            margin-left: -50%;
             padding: 10px 0;
             white-space: nowrap;
             overflow: hidden;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.15em;
             display: flex;
         }
 
+        @media (min-width: 640px) {
+            .ticker-band { font-size: 0.75rem; }
+        }
+
         .band-left {
             background-color: var(--olive);
             color: white;
-            transform: rotate(-2.5deg) scale(1.1);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transform: rotate(-2deg);
         }
 
         .band-right {
             background-color: var(--coffee);
             color: var(--cream);
-            transform: rotate(2.5deg) scale(1.1);
-            margin-top: -15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transform: rotate(2deg);
+            margin-top: -12px;
         }
 
         .ticker-content {
@@ -96,22 +100,73 @@
             will-change: transform;
         }
 
-        /* Velocidade rápida (7s) para dinamismo no PC */
-        .animate-left { animation: tickerLeft 7s linear infinite; }
-        .animate-right { animation: tickerRight 7s linear infinite; }
+        .animate-left { animation: tickerLeft 15s linear infinite; }
+        .animate-right { animation: tickerRight 15s linear infinite; }
 
-        @keyframes tickerLeft {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+        @keyframes tickerLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes tickerRight { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+
+        /* Modal Generico */
+        .modal-base {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(78, 52, 46, 0.4);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
         }
 
-        @keyframes tickerRight {
-            0% { transform: translateX(-50%); }
-            100% { transform: translateX(0); }
+        /* Jogo Styles */
+        #game-canvas-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 55vh;
+            background: #fff;
+            border-radius: 2rem;
+            overflow: hidden;
+            border: 4px solid var(--olive);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
-        /* --- HOVER EFFECTS PROFISSIONAIS --- */
+        #game-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            touch-action: none;
+        }
 
+        .game-ui {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            color: var(--coffee);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            z-index: 20;
+        }
+
+        /* Looping Icon Animations */
+        .icon-loop-pulse { animation: iconPulse 2s ease-in-out infinite; }
+        .icon-loop-bounce { animation: iconBounce 2s ease-in-out infinite; }
+        .icon-loop-spin { animation: iconSpin 4s linear infinite; }
+        .icon-loop-shake { animation: iconShake 3s ease-in-out infinite; }
+        .icon-loop-float { animation: iconFloat 3s ease-in-out infinite; }
+
+        @keyframes iconPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+        @keyframes iconBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+        @keyframes iconSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes iconShake { 0%, 100% { transform: rotate(0); } 10%, 30%, 50% { transform: rotate(5deg); } 20%, 40%, 60% { transform: rotate(-5deg); } }
+        @keyframes iconFloat { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-10px) rotate(5deg); } }
+
+        /* Button Effects */
         .btn-link {
             transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
             position: relative;
@@ -121,63 +176,10 @@
             z-index: 1;
         }
 
-        .btn-link:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 15px 35px -10px rgba(78, 52, 46, 0.15);
-        }
-
         .btn-link:active {
             transform: scale(0.98);
         }
 
-        /* Hover WhatsApp: Pulse e Glow Verde */
-        .btn-wpp:hover {
-            border-color: rgba(37, 211, 102, 0.3);
-            background: #fdfdfd;
-        }
-        .btn-wpp:hover .icon-box {
-            background: #25D366;
-            color: white;
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
-        }
-        .btn-wpp:hover .btn-text-main { color: #25D366; }
-
-        /* Hover Shopee: Pop de Cor e Agitação do Ícone */
-        .btn-shopee:hover {
-            border-color: rgba(238, 77, 45, 0.3);
-        }
-        .btn-shopee:hover .icon-box {
-            background: #EE4D2D;
-            color: white;
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 0 15px rgba(238, 77, 45, 0.4);
-        }
-        .btn-shopee:hover .btn-text-main { color: #EE4D2D; }
-
-        /* Hover Mercado Livre: Caminhão Passando e Glow Amarelo */
-        .btn-ml:hover {
-            border-color: rgba(255, 230, 0, 0.5);
-        }
-        .btn-ml .truck-icon {
-            position: absolute;
-            left: -50px;
-            top: 50%;
-            transform: translateY(-50%);
-            opacity: 0;
-            transition: all 0.6s cubic-bezier(0.45, 0, 0.55, 1);
-            color: #FFE600;
-        }
-        .btn-ml:hover .truck-icon {
-            left: 110%;
-            opacity: 1;
-        }
-        .btn-ml:hover .icon-box {
-            background: #FFE600;
-            color: #4E342E;
-            box-shadow: 0 0 15px rgba(255, 230, 0, 0.3);
-        }
-
-        /* Hover Site: Preenchimento de Onda Orgânica */
         .btn-site .wave-fill {
             position: absolute;
             bottom: -100%;
@@ -190,59 +192,124 @@
             border-radius: 50% 50% 0 0;
             transform: scale(1.5);
         }
-        .btn-site:hover .wave-fill {
-            bottom: 0;
-            border-radius: 0;
-            transform: scale(1);
-        }
-        .btn-site:hover .icon-box {
-            background: rgba(255,255,255,0.2);
-            color: white;
-        }
-        .btn-site:hover .btn-text-main, .btn-site:hover .btn-text-sub, .btn-site:hover .arrow {
-            color: white !important;
+        .btn-site:hover .wave-fill { bottom: 0; border-radius: 0; transform: scale(1); }
+        .btn-site:hover .icon-box { background: rgba(255,255,255,0.2); color: white; }
+        .btn-site:hover span, .btn-site:hover i { color: white !important; }
+
+        .interstitial {
+            position: absolute;
+            inset: 0;
+            background: white;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
 
-        /* Outros estilos auxiliares */
-        .icon-box {
-            transition: all 0.4s ease;
-        }
-        .btn-text-main { transition: color 0.3s ease; font-weight: 700; }
-        .btn-text-sub { transition: color 0.3s ease; }
+        .btn-link.is-active .interstitial { opacity: 1; pointer-events: auto; }
+        .loading-bar { width: 80%; height: 4px; background: #eee; border-radius: 10px; margin-top: 10px; overflow: hidden; }
+        .loading-bar-fill { height: 100%; width: 0%; transition: width 5s linear; }
+        .btn-link.is-active .loading-bar-fill { width: 100%; }
 
         .cascade-item { opacity: 0; transform: translateY(20px); }
         .fade-in { animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-
-        @keyframes fadeInUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="baru-bg font-sans min-h-screen flex flex-col items-center">
 
-    <main class="w-full flex flex-col items-center py-12">
-        
-        <!-- Header -->
-        <header class="text-center px-6 mb-4 cascade-item">
-            <div class="relative inline-block mb-4">
-                <div class="w-28 h-28 rounded-full border-[3px] border-olive p-1 bg-white shadow-2xl mx-auto overflow-hidden">
-                    <img src="logo1.png" alt="Barufé" class="w-full h-full object-cover rounded-full">
+    <!-- Modal Storytelling -->
+    <div id="story-modal" class="modal-base">
+        <div class="relative bg-white w-full max-w-[400px] rounded-[3rem] p-8 text-center shadow-2xl scale-0 transition-transform duration-500 modal-inner">
+            <button onclick="closeStory()" class="absolute top-6 right-8 text-coffee/20 hover:text-coffee transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div class="w-20 h-20 rounded-full border border-olive/10 p-1 mx-auto mb-4 bg-white shadow-sm overflow-hidden">
+                <img src="https://placehold.co/400x400/FFFFFF/4E342E?text=Logo" alt="Barufé Logo" class="w-full h-full object-contain">
+            </div>
+            <h2 class="font-logo text-4xl text-coffee mb-4">Barufé</h2>
+            <div class="w-full h-[1px] bg-coffee/5 mb-6"></div>
+            <div id="typing-area" class="space-y-4 text-coffee/80 leading-relaxed font-sans text-sm sm:text-base"></div>
+            <p id="footer-story" class="mt-8 text-[10px] text-coffee/40 font-medium italic opacity-0 transition-opacity duration-1000">
+                Uma homenagem às raízes de Santa Fé de Minas que nutrem nossa história.
+            </p>
+        </div>
+    </div>
+
+    <!-- Modal Jogo -->
+    <div id="game-modal" class="modal-base">
+        <div class="relative w-full max-w-[400px] flex flex-col items-center">
+            <div id="game-canvas-container">
+                <div class="game-ui">
+                    <div>
+                        <div class="text-[10px] opacity-50 uppercase tracking-tighter">Score</div>
+                        <div id="game-score" class="text-2xl leading-none">0</div>
+                    </div>
+                    <div class="text-right">
+                        <div id="game-lives-container" class="flex gap-1 mb-1 justify-end">
+                            <i data-lucide="heart" class="w-4 h-4 text-red-500 fill-current"></i>
+                            <i data-lucide="heart" class="w-4 h-4 text-red-500 fill-current"></i>
+                            <i data-lucide="heart" class="w-4 h-4 text-red-500 fill-current"></i>
+                        </div>
+                        <div id="game-level" class="text-[10px] text-olive uppercase tracking-widest">Nível 1</div>
+                    </div>
+                </div>
+                <canvas id="game-canvas"></canvas>
+                
+                <!-- Game Over/Start Screen -->
+                <div id="game-overlay" class="absolute inset-0 bg-cream/95 flex flex-col items-center justify-center p-8 text-center z-30">
+                    <div id="game-icon-container" class="mb-4">
+                        <svg width="60" height="60" viewBox="0 0 100 100" class="text-olive fill-current icon-loop-float">
+                            <path d="M50 15c-15 0-30 20-30 45s15 35 30 35 30-10 30-35-15-45-30-45z"/>
+                            <path d="M50 20c-10 0-20 15-20 40s10 30 20 30 20-5 20-30-10-40-20-40z" fill="white" opacity="0.2"/>
+                        </svg>
+                    </div>
+                    <h3 id="game-title-container" class="font-serif text-xl text-coffee mb-2">
+                        Desafio da <span class="font-logo text-4xl block mt-1">Barufé</span>
+                    </h3>
+                    <p id="game-desc" class="text-xs text-coffee/60 mb-6 font-sans">Mova a cesta para colher o máximo de Baru que conseguir!</p>
+                    <div id="game-playful-msg" class="hidden text-sm font-bold text-olive-dark mb-6 italic leading-snug">
+                        "Dica: Quem come as castanhas Barufé tem muito mais energia e consegue ir muito mais longe! 🌰✨"
+                    </div>
+                    <button id="start-btn" onclick="startGame()" class="bg-olive text-white font-bold py-3 px-8 rounded-full hover:bg-olive-dark transition-all transform hover:scale-105 active:scale-95 shadow-lg text-sm uppercase tracking-widest">
+                        Começar Jogo
+                    </button>
                 </div>
             </div>
-            <h1 class="font-logo text-5xl text-coffee">Barufé</h1>
-            <p class="font-serif italic text-coffee/70 text-lg mt-2 leading-tight">O sabor autêntico do Cerrado Mineiro</p>
+            <button onclick="closeGame()" class="mt-4 bg-coffee/20 text-coffee font-bold py-2 px-6 rounded-full border border-coffee/10 backdrop-blur-md text-xs uppercase tracking-widest">
+                Fechar Jogo
+            </button>
+        </div>
+    </div>
+
+    <main class="w-full flex flex-col items-center py-8 sm:py-12">
+        
+        <!-- Header -->
+        <header class="text-center px-6 mb-2 cascade-item">
+            <div class="relative inline-block mb-3 group cursor-pointer" onclick="openStory()">
+                <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-[3px] border-olive p-1 bg-white shadow-xl mx-auto overflow-hidden transition-transform group-hover:scale-105 active:scale-95">
+                    <img src="https://placehold.co/400x400/4E342E/F9F9F3?text=B" alt="Barufé" class="w-full h-full object-cover rounded-full">
+                </div>
+                <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 bg-olive text-white text-[8px] px-2 py-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                    Nossa História
+                </div>
+            </div>
+            <h1 class="font-logo text-4xl sm:text-5xl text-coffee">Barufé</h1>
+            <p class="font-serif italic text-coffee/70 text-base sm:text-lg mt-1 leading-tight">O sabor autêntico do Cerrado Mineiro</p>
         </header>
 
-        <!-- Faixas Cruzadas (Carrossel) -->
-        <div class="ticker-container mb-12 py-10">
-            <!-- Faixa Olive (Esquerda) -->
+        <!-- Faixas Cruzadas -->
+        <div class="ticker-container mb-10 py-8">
             <div class="ticker-band band-left">
                 <div class="ticker-content animate-left">
                     <span>100% VEGANO • PROCESSO ARTESANAL • DIRETO DO PRODUTOR • ÔMEGA 6 E 9 • ANTIOXIDANTES • PROTEÍNA PURA •&nbsp;</span>
                     <span>100% VEGANO • PROCESSO ARTESANAL • DIRETO DO PRODUTOR • ÔMEGA 6 E 9 • ANTIOXIDANTES • PROTEÍNA PURA •&nbsp;</span>
                 </div>
             </div>
-            <!-- Faixa Coffee (Direita) -->
             <div class="ticker-band band-right">
                 <div class="ticker-content animate-right">
                     <span>SELECIONADAS À MÃO • TRADIÇÃO MINEIRA • CROCANTES • NUTRITIVAS • VÁCUO • SEM CONSERVANTES •&nbsp;</span>
@@ -252,109 +319,400 @@
         </div>
 
         <!-- Links Oficiais -->
-        <section class="w-full max-w-[360px] px-6 space-y-5">
+        <section class="w-full max-w-[340px] sm:max-w-[360px] px-6 space-y-4">
             
             <!-- WhatsApp -->
-            <button onclick="triggerAction(this, 'wpp', 'https://wa.me/5538998649562')" class="btn-link btn-wpp group w-full flex items-center justify-between p-5 rounded-3xl">
-                <div class="flex items-center space-x-4">
-                    <div class="icon-box w-12 h-12 flex items-center justify-center bg-whatsapp/10 rounded-2xl text-whatsapp">
-                        <i data-lucide="message-circle" class="w-6 h-6"></i>
+            <div class="btn-link-wrapper relative group">
+                <button onclick="handleRedirect(this, 'wpp', 'https://wa.me/5538998649562')" class="btn-link group w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl sm:rounded-3xl">
+                    <div class="flex items-center space-x-3 sm:space-x-4">
+                        <div class="icon-box w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-whatsapp/10 rounded-xl sm:rounded-2xl text-whatsapp">
+                            <i data-lucide="message-circle" class="w-5 h-5 sm:w-6 sm:h-6 icon-loop-pulse"></i>
+                        </div>
+                        <div class="text-left">
+                            <span class="btn-text-main block text-coffee font-bold text-sm sm:text-base">WhatsApp Oficial</span>
+                            <span class="btn-text-sub text-[9px] uppercase font-bold text-coffee/30 tracking-widest leading-none">Pedido pelo Chat</span>
+                        </div>
                     </div>
-                    <div class="text-left">
-                        <span class="btn-text-main block text-coffee">WhatsApp Oficial</span>
-                        <span class="btn-text-sub text-[10px] uppercase font-bold text-coffee/30 tracking-widest">Atendimento Direto</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 sm:w-5 sm:h-5 text-coffee/20"></i>
+                    <div class="interstitial">
+                        <span class="text-xs font-bold text-whatsapp uppercase tracking-wider">Preparando o atendimento...</span>
+                        <div class="loading-bar"><div class="loading-bar-fill bg-whatsapp"></div></div>
+                        <span class="text-[10px] text-coffee/40 mt-1">Redirecionando em <span class="countdown">5</span>s</span>
                     </div>
-                </div>
-                <i data-lucide="chevron-right" class="arrow w-5 h-5 text-coffee/20"></i>
-            </button>
+                </button>
+            </div>
 
             <!-- Shopee -->
-            <button onclick="triggerAction(this, 'shopee', 'https://shopee.com.br')" class="btn-link btn-shopee group w-full flex items-center justify-between p-5 rounded-3xl">
-                <div class="flex items-center space-x-4">
-                    <div class="icon-box w-12 h-12 flex items-center justify-center bg-shopee/10 rounded-2xl text-shopee">
-                        <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+            <div class="btn-link-wrapper relative group">
+                <button onclick="handleRedirect(this, 'shopee', 'https://shopee.com.br')" class="btn-link group w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl sm:rounded-3xl">
+                    <div class="flex items-center space-x-3 sm:space-x-4">
+                        <div class="icon-box w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-shopee/10 rounded-xl sm:rounded-2xl text-shopee">
+                            <i data-lucide="shopping-bag" class="w-5 h-5 sm:w-6 sm:h-6 icon-loop-bounce"></i>
+                        </div>
+                        <div class="text-left">
+                            <span class="btn-text-main block text-coffee font-bold text-sm sm:text-base">Loja na Shopee</span>
+                            <span class="btn-text-sub text-[9px] uppercase font-bold text-coffee/30 tracking-widest leading-none">Ofertas & Frete</span>
+                        </div>
                     </div>
-                    <div class="text-left">
-                        <span class="btn-text-main block text-coffee">Loja na Shopee</span>
-                        <span class="btn-text-sub text-[10px] uppercase font-bold text-coffee/30 tracking-widest">Ofertas & Frete</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 sm:w-5 sm:h-5 text-coffee/20"></i>
+                    <div class="interstitial">
+                        <span class="text-xs font-bold text-shopee uppercase tracking-wider">Abrindo a Shopee...</span>
+                        <div class="loading-bar"><div class="loading-bar-fill bg-shopee"></div></div>
+                        <span class="text-[10px] text-coffee/40 mt-1">Redirecionando em <span class="countdown">5</span>s</span>
                     </div>
-                </div>
-                <i data-lucide="chevron-right" class="arrow w-5 h-5 text-coffee/20"></i>
-            </button>
+                </button>
+            </div>
 
             <!-- Mercado Livre -->
-            <button onclick="triggerAction(this, 'ml', 'https://mercadolivre.com.br')" class="btn-link btn-ml group w-full flex items-center justify-between p-5 rounded-3xl">
-                <div class="truck-icon"><i data-lucide="truck" class="w-8 h-8 fill-current"></i></div>
-                <div class="flex items-center space-x-4">
-                    <div class="icon-box w-12 h-12 flex items-center justify-center bg-mercadolivre/20 rounded-2xl text-coffee/70">
-                        <i data-lucide="package" class="w-6 h-6"></i>
+            <div class="btn-link-wrapper relative group">
+                <button onclick="handleRedirect(this, 'ml', 'https://mercadolivre.com.br')" class="btn-link group w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl sm:rounded-3xl">
+                    <div class="flex items-center space-x-3 sm:space-x-4">
+                        <div class="icon-box w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-mercadolivre/20 rounded-xl sm:rounded-2xl text-coffee/70">
+                            <i data-lucide="truck" class="w-5 h-5 sm:w-6 sm:h-6 icon-loop-shake"></i>
+                        </div>
+                        <div class="text-left">
+                            <span class="btn-text-main block text-coffee font-bold text-sm sm:text-base">Mercado Livre</span>
+                            <span class="btn-text-sub text-[9px] uppercase font-bold text-coffee/30 tracking-widest leading-none">Entrega Rápida</span>
+                        </div>
                     </div>
-                    <div class="text-left">
-                        <span class="btn-text-main block text-coffee">Mercado Livre</span>
-                        <span class="btn-text-sub text-[10px] uppercase font-bold text-coffee/30 tracking-widest">Entrega Mais Rápida</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 sm:w-5 sm:h-5 text-coffee/20"></i>
+                    <div class="interstitial">
+                        <span class="text-xs font-bold text-coffee uppercase tracking-wider">Buscando no Mercado Livre...</span>
+                        <div class="loading-bar"><div class="loading-bar-fill bg-mercadolivre"></div></div>
+                        <span class="text-[10px] text-coffee/40 mt-1">Redirecionando em <span class="countdown">5</span>s</span>
                     </div>
-                </div>
-                <i data-lucide="chevron-right" class="arrow w-5 h-5 text-coffee/20"></i>
-            </button>
+                </button>
+            </div>
+
+            <!-- Amazon -->
+            <div class="btn-link-wrapper relative group">
+                <button onclick="handleRedirect(this, 'amazon', 'https://amazon.com.br')" class="btn-link group w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl sm:rounded-3xl">
+                    <div class="flex items-center space-x-3 sm:space-x-4">
+                        <div class="icon-box w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-amazon/10 rounded-xl sm:rounded-2xl text-amazon">
+                            <i data-lucide="shopping-cart" class="w-5 h-5 sm:w-6 sm:h-6 icon-loop-float"></i>
+                        </div>
+                        <div class="text-left">
+                            <span class="btn-text-main block text-coffee font-bold text-sm sm:text-base">Comprar na Amazon</span>
+                            <span class="btn-text-sub text-[9px] uppercase font-bold text-coffee/30 tracking-widest leading-none">Confiança & Prime</span>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-right" class="w-4 h-4 sm:w-5 sm:h-5 text-coffee/20"></i>
+                    <div class="interstitial">
+                        <span class="text-xs font-bold text-amazon uppercase tracking-wider">Conectando à Amazon...</span>
+                        <div class="loading-bar"><div class="loading-bar-fill bg-amazon"></div></div>
+                        <span class="text-[10px] text-coffee/40 mt-1">Redirecionando em <span class="countdown">5</span>s</span>
+                    </div>
+                </button>
+            </div>
 
             <!-- Site Oficial -->
-            <button onclick="triggerAction(this, 'site', 'https://barufe.com.br')" class="btn-link btn-site group w-full flex items-center justify-between p-5 rounded-3xl">
-                <div class="wave-fill"></div>
-                <div class="flex items-center space-x-4">
-                    <div class="icon-box w-12 h-12 flex items-center justify-center bg-olive/10 rounded-2xl text-olive">
-                        <i data-lucide="globe" class="w-6 h-6"></i>
+            <div class="btn-link-wrapper relative group">
+                <button onclick="handleRedirect(this, 'site', 'https://barufe.com.br')" class="btn-link btn-site group w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl sm:rounded-3xl">
+                    <div class="wave-fill"></div>
+                    <div class="flex items-center space-x-3 sm:space-x-4">
+                        <div class="icon-box w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-olive/10 rounded-xl sm:rounded-2xl text-olive">
+                            <i data-lucide="globe" class="w-5 h-5 sm:w-6 sm:h-6 icon-loop-spin"></i>
+                        </div>
+                        <div class="text-left">
+                            <span class="btn-text-main block text-coffee font-bold text-sm sm:text-base">Site Oficial</span>
+                            <span class="btn-text-sub text-[9px] uppercase font-bold text-coffee/30 tracking-widest leading-none">Nossa Loja Online</span>
+                        </div>
                     </div>
-                    <div class="text-left">
-                        <span class="btn-text-main block text-coffee">Site Oficial</span>
-                        <span class="btn-text-sub text-[10px] uppercase font-bold text-coffee/30 tracking-widest">Nossa Loja Online</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 sm:w-5 sm:h-5 text-coffee/20"></i>
+                    <div class="interstitial">
+                        <span class="text-xs font-bold text-olive uppercase tracking-wider">Abrindo as portas...</span>
+                        <div class="loading-bar"><div class="loading-bar-fill bg-olive"></div></div>
+                        <span class="text-[10px] text-coffee/40 mt-1">Redirecionando em <span class="countdown">5</span>s</span>
                     </div>
-                </div>
-                <i data-lucide="chevron-right" class="arrow w-5 h-5 text-coffee/20"></i>
-            </button>
+                </button>
+            </div>
+
+            <!-- Botão Jogo -->
+            <div class="btn-link-wrapper relative group pt-2">
+                <button onclick="openGameModal()" class="btn-link group w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl sm:rounded-3xl border-2 border-olive/30 bg-white shadow-lg">
+                    <div class="flex items-center space-x-3 sm:space-x-4">
+                        <div class="icon-box w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-olive/10 rounded-xl sm:rounded-2xl text-olive">
+                            <i data-lucide="gamepad-2" class="w-5 h-5 sm:w-6 sm:h-6 icon-loop-float"></i>
+                        </div>
+                        <div class="text-left">
+                            <span class="btn-text-main block text-coffee font-bold text-sm sm:text-base">O Jogo da Barufé</span>
+                            <span class="btn-text-sub text-[9px] uppercase font-bold text-olive/60 tracking-widest leading-none">Colheita do Cerrado</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-end">
+                         <span class="px-2 py-0.5 bg-olive text-white text-[7px] font-bold rounded-md animate-pulse uppercase">Play</span>
+                    </div>
+                </button>
+            </div>
 
         </section>
 
         <!-- Minimal Footer -->
-        <div class="mt-20 flex flex-col items-center space-y-6 cascade-item">
+        <div class="mt-16 sm:mt-20 flex flex-col items-center space-y-6 cascade-item pb-10">
             <div class="flex space-x-8">
-                <a href="#" class="text-coffee/40 hover:text-olive transition-colors transform hover:scale-110">
+                <a href="#" class="text-coffee/40 hover:text-olive transition-all transform hover:scale-110 active:scale-90">
                     <i data-lucide="instagram" class="w-6 h-6"></i>
                 </a>
-                <a href="#" class="text-coffee/40 hover:text-olive transition-colors transform hover:scale-110">
+                <a href="#" class="text-coffee/40 hover:text-olive transition-all transform hover:scale-110 active:scale-90">
                     <i data-lucide="mail" class="w-6 h-6"></i>
                 </a>
             </div>
-            <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-coffee">Artesanal • Minas Gerais</p>
+            <p class="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.3em] font-bold text-coffee/60">Santa Fé de Minas • Minas Gerais</p>
         </div>
 
     </main>
 
     <script>
-        // Init Lucide
         lucide.createIcons();
 
-        // Cascade Intro
-        document.addEventListener('DOMContentLoaded', () => {
-            const items = document.querySelectorAll('.cascade-item');
-            items.forEach((item, index) => {
-                setTimeout(() => item.classList.add('fade-in'), index * 250);
+        // Modal Elements
+        const storyModal = document.getElementById('story-modal');
+        const gameModal = document.getElementById('game-modal');
+        const typingArea = document.getElementById('typing-area');
+        const footerStory = document.getElementById('footer-story');
+
+        // Storytelling
+        async function openStory() {
+            storyModal.style.display = 'flex';
+            setTimeout(() => storyModal.querySelector('.modal-inner').classList.remove('scale-0'), 10);
+            typingArea.innerHTML = '';
+            footerStory.style.opacity = '0';
+            const storyLines = [
+                { text: "O nome Barufé nasce da união de duas forças:", style: "text-sm sm:text-base font-medium" },
+                { text: "Baru (o fruto)", style: "text-xl sm:text-2xl font-bold text-olive" },
+                { text: "+", style: "text-lg font-bold text-coffee/20" },
+                { text: "Santa Fé de Minas (nossa origem)", style: "text-xl sm:text-2xl font-bold text-coffee" }
+            ];
+            for (let line of storyLines) {
+                const p = document.createElement('p');
+                p.className = line.style;
+                typingArea.appendChild(p);
+                await typeText(p, line.text);
+                await new Promise(r => setTimeout(r, 400));
+            }
+            footerStory.style.opacity = '1';
+        }
+        function closeStory() {
+            storyModal.querySelector('.modal-inner').classList.add('scale-0');
+            setTimeout(() => storyModal.style.display = 'none', 500);
+        }
+        async function typeText(element, text, speed = 30) {
+            return new Promise(resolve => {
+                let i = 0;
+                element.classList.add('typing-cursor');
+                const interval = setInterval(() => {
+                    element.innerHTML += text.charAt(i); i++;
+                    if (i >= text.length) { clearInterval(interval); element.classList.remove('typing-cursor'); resolve(); }
+                }, speed);
             });
-            
-            const buttons = document.querySelectorAll('.btn-link');
-            buttons.forEach((b, i) => {
-                setTimeout(() => b.classList.add('fade-in'), (i + 2) * 150);
+        }
+
+        // --- GAME LOGIC ---
+        const canvas = document.getElementById('game-canvas');
+        const ctx = canvas.getContext('2d');
+        const scoreEl = document.getElementById('game-score');
+        const levelEl = document.getElementById('game-level');
+        const gameOverlay = document.getElementById('game-overlay');
+        const startBtn = document.getElementById('start-btn');
+        const livesContainer = document.getElementById('game-lives-container');
+        const playfulMsg = document.getElementById('game-playful-msg');
+
+        let gameState = 'waiting'; 
+        let score = 0;
+        let level = 1;
+        let lives = 3;
+        let chestnuts = [];
+        let basket = { x: 0, y: 0, w: 80, h: 40, targetX: 0 };
+        let animationFrame;
+        let spawnRate = 1200; 
+        let lastSpawn = 0;
+
+        function resizeCanvas() {
+            const container = document.getElementById('game-canvas-container');
+            if(!container) return;
+            canvas.width = container.clientWidth;
+            canvas.height = container.clientHeight;
+            basket.y = canvas.height - 60;
+            basket.x = canvas.width / 2 - basket.w / 2;
+        }
+
+        function updateLivesUI() {
+            livesContainer.innerHTML = '';
+            for (let i = 0; i < 3; i++) {
+                const heart = document.createElement('i');
+                heart.setAttribute('data-lucide', 'heart');
+                heart.className = `w-4 h-4 ${i < lives ? 'text-red-500 fill-current' : 'text-coffee/20'}`;
+                livesContainer.appendChild(heart);
+            }
+            lucide.createIcons();
+        }
+
+        function openGameModal() {
+            gameModal.style.display = 'flex';
+            resizeCanvas();
+            resetGame();
+        }
+
+        function closeGame() {
+            gameModal.style.display = 'none';
+            cancelAnimationFrame(animationFrame);
+            gameState = 'waiting';
+        }
+
+        function resetGame() {
+            score = 0;
+            level = 1;
+            lives = 3;
+            spawnRate = 1200;
+            chestnuts = [];
+            scoreEl.innerText = score;
+            levelEl.innerText = 'NÍVEL 1';
+            updateLivesUI();
+            playfulMsg.classList.add('hidden');
+            gameOverlay.style.display = 'flex';
+            document.getElementById('game-desc').classList.remove('hidden');
+            document.getElementById('game-icon-container').classList.remove('hidden');
+            startBtn.innerText = 'Começar Jogo';
+        }
+
+        function startGame() {
+            gameState = 'playing';
+            gameOverlay.style.display = 'none';
+            lastSpawn = performance.now();
+            requestAnimationFrame(gameLoop);
+        }
+
+        function spawnChestnut() {
+            const size = Math.random() * 10 + 15;
+            chestnuts.push({
+                x: Math.random() * (canvas.width - size),
+                y: -50,
+                size: size,
+                speed: (Math.random() * 2 + 3) * (1 + (level - 1) * 0.15), // Progressively faster
+                rot: Math.random() * Math.PI * 2,
+                rotSpeed: (Math.random() - 0.5) * 0.1
             });
+        }
+
+        function gameLoop(time) {
+            if (gameState !== 'playing') return;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            if (time - lastSpawn > spawnRate) {
+                spawnChestnut();
+                lastSpawn = time;
+            }
+
+            basket.x += (basket.targetX - basket.x) * 0.2;
+            if (basket.x < 0) basket.x = 0;
+            if (basket.x > canvas.width - basket.w) basket.x = canvas.width - basket.w;
+
+            // Draw Basket
+            ctx.fillStyle = '#4E342E';
+            ctx.beginPath();
+            if (ctx.roundRect) {
+                ctx.roundRect(basket.x, basket.y, basket.w, basket.h, [0, 0, 8, 8]);
+            } else {
+                ctx.rect(basket.x, basket.y, basket.w, basket.h);
+            }
+            ctx.fill();
+
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '12px "Kaushan Script", cursive';
+            ctx.textAlign = 'center';
+            ctx.fillText('Barufé', basket.x + basket.w/2, basket.y + basket.h/2 + 4);
+
+            // Alça
+            ctx.strokeStyle = '#4E342E';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(basket.x + basket.w/2, basket.y, basket.w/3, Math.PI, 0);
+            ctx.stroke();
+
+            // Chestnuts
+            for (let i = chestnuts.length - 1; i >= 0; i--) {
+                const c = chestnuts[i];
+                c.y += c.speed;
+                c.rot += c.rotSpeed;
+
+                ctx.save();
+                ctx.translate(c.x + c.size/2, c.y + c.size/2);
+                ctx.rotate(c.rot);
+                ctx.fillStyle = '#4E342E';
+                ctx.beginPath();
+                ctx.ellipse(0, 0, c.size/2, c.size/3, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+
+                if (c.y + c.size > basket.y && 
+                    c.x + c.size > basket.x && 
+                    c.x < basket.x + basket.w &&
+                    c.y < basket.y + basket.h) {
+                    chestnuts.splice(i, 1);
+                    score++;
+                    scoreEl.innerText = score;
+                    if (score > 0 && score % 8 === 0) {
+                        level++;
+                        levelEl.innerText = 'NÍVEL ' + level;
+                        spawnRate = Math.max(350, 1200 - (level * 80));
+                    }
+                    continue;
+                }
+
+                if (c.y > canvas.height) {
+                    chestnuts.splice(i, 1);
+                    lives--;
+                    updateLivesUI();
+                    if (lives <= 0) gameOver();
+                }
+            }
+
+            animationFrame = requestAnimationFrame(gameLoop);
+        }
+
+        function gameOver() {
+            gameState = 'gameover';
+            gameOverlay.style.display = 'flex';
+            document.getElementById('game-desc').classList.add('hidden');
+            document.getElementById('game-icon-container').classList.add('hidden');
+            playfulMsg.classList.remove('hidden');
+            startBtn.innerText = 'Tentar Novamente';
+        }
+
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            basket.targetX = e.clientX - rect.left - basket.w / 2;
         });
 
-        // Unique Thematic Animations for Click
-        function triggerAction(btn, type, url) {
-            // Efeito de clique rápido
-            btn.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                btn.style.transform = '';
-                window.open(url, '_blank');
-            }, 150);
+        canvas.addEventListener('touchmove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            basket.targetX = e.touches[0].clientX - rect.left - basket.w / 2;
+            e.preventDefault();
+        }, { passive: false });
+
+        // Redirect Logic
+        function handleRedirect(btn, theme, url) {
+            if (btn.classList.contains('is-active')) return;
+            btn.classList.add('is-active');
+            let timeLeft = 5;
+            const countdownEl = btn.querySelector('.countdown');
+            const timer = setInterval(() => {
+                timeLeft--;
+                if (countdownEl) countdownEl.innerText = timeLeft;
+                if (timeLeft <= 0) { clearInterval(timer); window.location.href = url; }
+            }, 1000);
         }
+
+        // Intro
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('.cascade-item');
+            items.forEach((item, index) => { setTimeout(() => item.classList.add('fade-in'), index * 200); });
+            const wrappers = document.querySelectorAll('.btn-link-wrapper');
+            wrappers.forEach((w, i) => { setTimeout(() => w.classList.add('fade-in'), (i + 3) * 120); });
+        });
+
+        window.addEventListener('resize', resizeCanvas);
     </script>
 </body>
 </html>
